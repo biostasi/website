@@ -1,376 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>BIOSTASI — Life. Paused. Not Lost.</title>
-
-  <meta
-    name="description"
-    content="BIOSTASI is an emerging international initiative exploring biostasis, cryomedicine, human preservation and future technologies."
-  >
-
-  <meta name="theme-color" content="#06090d">
-
-  <style>
-    :root {
-      --background: #06090d;
-      --surface: rgba(255, 255, 255, 0.055);
-      --border: rgba(255, 255, 255, 0.13);
-      --text: #f4f7f8;
-      --muted: #9da8b0;
-      --accent: #53d2c5;
-      --accent-light: #9af1e8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(
-          circle at 50% 15%,
-          rgba(83, 210, 197, 0.13),
-          transparent 32%
-        ),
-        linear-gradient(180deg, #080c11 0%, var(--background) 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 28px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand {
-      font-size: 1.05rem;
-      font-weight: 750;
-      letter-spacing: 0.18em;
-    }
-
-    .status {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--muted);
-      font-size: 0.86rem;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 16px rgba(83, 210, 197, 0.8);
-    }
-
-    main {
-      flex: 1;
-      width: min(980px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 100px 0 70px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      margin-bottom: 24px;
-      color: var(--accent-light);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 900px;
-      font-size: clamp(3.3rem, 9vw, 7.7rem);
-      line-height: 0.94;
-      letter-spacing: -0.065em;
-      font-weight: 760;
-    }
-
-    .accent {
-      color: var(--accent);
-    }
-
-    .intro {
-      max-width: 720px;
-      margin-top: 34px;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      line-height: 1.75;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 42px;
-    }
-
-    .button {
-      min-height: 50px;
-      padding: 0 24px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 680;
-      transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background-color 160ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      color: #04100f;
-      background: var(--accent);
-      border: 1px solid var(--accent);
-    }
-
-    .button-secondary {
-      color: var(--text);
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .button-secondary:hover {
-      border-color: rgba(83, 210, 197, 0.65);
-    }
-
-    .topics {
-      margin-top: 76px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .topic {
-      padding: 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-    }
-
-    .topic-number {
-      color: var(--accent);
-      font-size: 0.76rem;
-      font-weight: 750;
-      letter-spacing: 0.12em;
-    }
-
-    .topic h2 {
-      margin-top: 18px;
-      font-size: 1.05rem;
-      font-weight: 680;
-    }
-
-    .topic p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    footer {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 25px 0 34px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    @media (max-width: 720px) {
-      header {
-        padding-top: 22px;
-      }
-
-      .status-text {
-        display: none;
-      }
-
-      main {
-        padding-top: 70px;
-      }
-
-      h1 {
-        font-size: clamp(3.1rem, 17vw, 5.2rem);
-      }
-
-      .topics {
-        grid-template-columns: 1fr;
-        margin-top: 58px;
-      }
-
-      footer {
-        flex-direction: column;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIOSTASI — Life. Paused. Not Lost.</title>
+<meta name="description" content="BIOSTASI is an emerging international research initiative exploring biostasis, cryobiology, cryomedicine and future regenerative technologies.">
+<meta name="theme-color" content="#06090d">
+<style>
+:root{
+--bg:#06090d;--card:rgba(255,255,255,.055);--border:rgba(255,255,255,.12);
+--text:#f4f7f8;--muted:#9da8b0;--accent:#53d2c5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Inter,Segoe UI,Arial,sans-serif;
+background:radial-gradient(circle at top,rgba(83,210,197,.14),transparent 30%),linear-gradient(#080c11,#06090d);
+color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+.wrapper{max-width:1100px;margin:auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+.brand{font-weight:800;letter-spacing:.18em}
+.status{color:var(--muted);font-size:.9rem}
+.hero{padding:90px 0 80px}
+.eyebrow{color:#9af1e8;text-transform:uppercase;font-size:.82rem;letter-spacing:.18em}
+h1{font-size:clamp(3.2rem,9vw,7rem);line-height:.95;margin:18px 0}
+.accent{color:var(--accent)}
+.intro{max-width:760px;color:var(--muted);font-size:1.15rem}
+.buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.btn{padding:14px 24px;border-radius:999px;font-weight:700;border:1px solid var(--border)}
+.primary{background:var(--accent);color:#04100f;border-color:var(--accent)}
+.secondary{background:var(--card)}
+section{padding:80px 0;border-top:1px solid var(--border)}
+.label{color:#9af1e8;text-transform:uppercase;font-size:.82rem;letter-spacing:.18em}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin:16px 0}
+.lead{max-width:760px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:40px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px}
+.card h3{margin:14px 0}
+.card p{color:var(--muted)}
+.panel{margin-top:36px;padding:28px;border:1px solid rgba(83,210,197,.35);border-radius:18px;background:rgba(83,210,197,.08)}
+.road div{padding:18px 0;border-bottom:1px solid var(--border)}
+.year{color:var(--accent);font-weight:700}
+footer{padding:30px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;color:var(--muted)}
+.links{display:flex;gap:18px}
+</style>
 </head>
-
 <body>
-  <div class="page">
+<div class="wrapper">
+<header>
+<div class="brand">BIOSTASI</div>
+<div class="status">Research &amp; Foundation Phase</div>
+</header>
 
-    <header>
-      <a class="brand" href="/" aria-label="BIOSTASI home">
-        BIOSTASI
-      </a>
+<section class="hero" style="border-top:none">
+<div class="eyebrow">Biostasis · Cryobiology · Cryomedicine</div>
+<h1>Life. Paused.<br><span class="accent">Not Lost.</span></h1>
+<p class="intro">
+BIOSTASI is an emerging international research initiative exploring biostasis,
+cryobiology, cryomedicine, brain and organ preservation, and future regenerative technologies.
+</p>
+<div class="buttons">
+<a class="btn primary" href="mailto:biostasi.hq@gmail.com">Contact BIOSTASI</a>
+<a class="btn secondary" href="#research">Explore Research</a>
+<a class="btn secondary" href="https://github.com/biostasi" target="_blank">GitHub</a>
+</div>
+</section>
 
-      <div class="status">
-        <span class="status-dot"></span>
-        <span class="status-text">Website under development</span>
-      </div>
-    </header>
+<section id="research">
+<div class="label">Research Focus</div>
+<h2>Scientific areas of interest</h2>
+<p class="lead">
+BIOSTASI studies scientific developments that may contribute to long-term biological preservation and future recovery.
+</p>
 
-    <main>
-      <p class="eyebrow">Biostasis · Cryomedicine · Future Technologies</p>
+<div class="grid">
+<div class="card">
+<h3>🧬 Cryobiology</h3>
+<p>Research on the response of cells and tissues to low temperatures and cryoprotective methods.</p>
+</div>
 
-      <h1>
-        Life. Paused.<br>
-        <span class="accent">Not Lost.</span>
-      </h1>
+<div class="card">
+<h3>🧠 Brain Preservation</h3>
+<p>Exploring approaches that aim to preserve neural structure and biological information.</p>
+</div>
 
-      <p class="intro">
-        BIOSTASI is an emerging international initiative exploring
-        biostasis, cryomedicine, long-term human preservation and the
-        technologies that may shape the future of life.
-      </p>
+<div class="card">
+<h3>❤️ Organ Preservation</h3>
+<p>Monitoring advances in perfusion, vitrification and long-term organ storage.</p>
+</div>
 
-      <div class="actions">
-        <a
-          class="button button-primary"
-          href="mailto:biostasi.hq@gmail.com"
-        >
-          Contact BIOSTASI
-        </a>
+<div class="card">
+<h3>🔬 Regenerative Technologies</h3>
+<p>Following developments in biotechnology, tissue engineering and molecular repair.</p>
+</div>
+</div>
+</section>
 
-        <a
-          class="button button-secondary"
-          href="https://github.com/biostasi"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit GitHub
-        </a>
-      </div>
+<section>
+<div class="label">Current Status</div>
+<h2>Building a scientific foundation</h2>
 
-      <section class="topics" aria-label="Areas of focus">
+<div class="panel">
+<strong>Research & Foundation Phase</strong>
+<p>
+BIOSTASI is currently focused on scientific research, public documentation,
+digital infrastructure and international collaboration.
+No products, clinical services or token sale are currently available.
+</p>
+</div>
+</section>
 
-        <article class="topic">
-          <span class="topic-number">01</span>
-          <h2>Biostasis</h2>
-          <p>
-            Exploring methods that may preserve biological structure
-            and information over extended periods.
-          </p>
-        </article>
+<section>
+<div class="label">Roadmap</div>
+<h2>Planned development</h2>
+<div class="road">
+<div><span class="year">2026</span><br>Foundation, branding, documentation and scientific positioning.</div>
+<div><span class="year">Next</span><br>Research network and international collaborations.</div>
+<div><span class="year">Future</span><br>Technology evaluation and responsible ecosystem development.</div>
+</div>
+</section>
 
-        <article class="topic">
-          <span class="topic-number">02</span>
-          <h2>Cryomedicine</h2>
-          <p>
-            Following scientific developments in low-temperature
-            medicine, preservation and recovery.
-          </p>
-        </article>
-
-        <article class="topic">
-          <span class="topic-number">03</span>
-          <h2>Future Technologies</h2>
-          <p>
-            Investigating how biotechnology, computation and emerging
-            systems may support long-term human preservation.
-          </p>
-        </article>
-
-      </section>
-    </main>
-
-    <footer>
-      <span>© 2026 BIOSTASI. All rights reserved.</span>
-
-      <div class="footer-links">
-        <a
-          href="https://x.com/BiostasiProject"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          X
-        </a>
-
-        <a
-          href="https://www.instagram.com/biostasi.project/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Instagram
-        </a>
-
-        <a
-          href="https://github.com/biostasi"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </div>
-    </footer>
-
-  </div>
+<footer>
+<div>© 2026 BIOSTASI. All rights reserved.</div>
+<div class="links">
+<a href="https://x.com/BiostasiProject" target="_blank">X</a>
+<a href="https://www.instagram.com/biostasi.project/" target="_blank">Instagram</a>
+<a href="https://github.com/biostasi" target="_blank">GitHub</a>
+</div>
+</footer>
+</div>
 </body>
 </html>
